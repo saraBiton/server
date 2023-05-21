@@ -1,45 +1,46 @@
-// const express = require('express')
+const express= require('express')
 
-// const router = express.Router();
+const router=express.Router();
 
-// const sensorController = require('../controllers/sensorController');
-// //startPoint = localhost:8000/sensors
+const sensorControllers = require('../controllers/sensorController');
+//startPoint = localhost:8000/sensors
 
-// //Get by id
-// router.route('/:id').get((req, res) => {
-//     const id = req.params.id;
-//     const sensor = sensorController.getSensorById(id)
-//     res.json(sensor);
-// })
-
-
-// //Get All
-// router.route('/').get((req, res) => {
-//     console.log(000)
-//     const sensors = sensorController.getAllSensors();
-//     res.json(sensors);
-//     console.log(sensors);
-// })
-
-// //Add sensor
-// router.route('/').post((req, res) => {
-//     const result = sensorController.addSensor()
-//     res.json(result);
-// })
-
-// // //Update sensor
-// router.route('/').put(async (req, res) => {
-//     const result = await sensorController.updateSensor();
-//     res.json(result);
-// });
-
-// // //Delete sensor
-// router.route('/:id').delete((req, res) => {
-//     const id = req.params.id;
-//     const sensors = sensorController.deleteSensor(id)
-//     res.json(sensors);
-// })
+//Get by id
+router.route('/:id').get((req, res) => {
+    const id = req.params.id;
+    const sensor = sensorControllers.getById(id)
+    res.json(sensor);
+})
 
 
+//Get All
+router.route('/').get( (req, res) => {
+    console.log(000)
+    const sensors = sensorControllers.initSensors();
+    res.json(sensors);
+    console.log(sensors);
+    // res.json(result).status(200);
+})
 
-// module.exports = router;
+//Add sensor
+router.route('/').post( (req, res) => {
+    const result = sensorControllers.initSensors()
+    res.json(result);
+})
+
+// //Edit sensor
+router.route('/').put(async(req, res) => {
+    const result = await sensorControllers.updateContent();
+    res.json(result);
+});
+
+// //Delete sensor
+router.route('/:id').delete((req, res) => {
+    const id = req.params.id;
+    const sensors = sensorControllers.Deletesensor(id)
+    res.json(sensors);
+})
+
+
+
+module.exports = router;
