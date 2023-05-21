@@ -10,9 +10,6 @@ function getDistance(origin, dest, apiKey) {
     res.on('data', (chunk) => {
       data += chunk;  
     });
-    // const {rows} = JSON.parse(data);
-    // console.log(rows[0].elements[0].distance);
-    // console.log(( result.rows.elements.Array))
     res.on('end', () => {
       const result = JSON.parse(data);
       console.log(result);

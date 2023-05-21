@@ -1,4 +1,5 @@
 const User = require('../Models/userModel');
+// const db = require('../Config/db')
 
 const getAllUsers = async () => {
   try {
@@ -10,10 +11,9 @@ const getAllUsers = async () => {
   }
 };
 
-const getUserById = (id) => {
-  return User.findById(id);
+const getUserById = (password) => {
+  return User.findOne({password});
 };
-
 
 const addUser = async (obj) => {
   try {
@@ -41,8 +41,27 @@ const deleteUser = async (id) => {
   await User.findByIdAndDelete(id);
   return 'Deleted!';
 }
+const checkLogin = async (username, password) => {
+  console.log(username);
+  console.log(password);
+  try {
+    const director = await User.findOne({ username, password });
+    console.log(director);
+    if (director)
+      return console.log(director);
+    else
+      return console.error(error);
+  }
+  catch (error) {
+    console.error(error);
+    return 'Internal server error';
+  } 
+}
+
 
 module.exports = {
+
+  checkLogin,
   getAllUsers,
   getUserById,
   addUser,

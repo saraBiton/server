@@ -1,4 +1,4 @@
-//localhost:8000/users/
+//localhost:3000/users/
 const express = require('express');
 const sensorController = require('../controllers/sensorController');
 const router = express.Router();

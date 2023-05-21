@@ -1,5 +1,5 @@
 
-const Sensor = require("../models/sensorModel");
+// const Sensor = require("../models/sensorModel");
 
 
 
