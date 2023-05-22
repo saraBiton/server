@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Director = require('../Models/DirectorModel');
 const Lifeguard = require('../Models/LifeguardModel');
 const User = require('../Models/userModel');
-const { db } = require('../config');
+const { db } = require('../sqlDB/config');
 
 
-const checkLogin = async (req) => {
-  var user =req;
+const checkLogin = async (user) => {
   try {
     // Check if credentials exist in Director collection
   
     console.log(user);
-    const director = await Director.findOne(user);
+    //console
+    const director = await Director.find(user);
     console.log(director);
     if (director) {
       return 'Director';

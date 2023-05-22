@@ -101,7 +101,7 @@ calculateRescueRoute('אבן גבירול')
   });
 
 //שליחת ביטול הגעה למדא
-const { sensor } = require("../Models/sensor")
+const { sensor } = require("./sensorStartWork")
 export class Lifeguard_system {
 
   //הריאקט קורה לפונקציה הזו

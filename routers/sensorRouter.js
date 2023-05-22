@@ -1,46 +1,34 @@
-// const express= require('express')
+//localhost:3000/users/
+const express = require('express');
+const sensorController = require('../controllers/sensorController');
+const router = express.Router();
 
-// const router=express.Router();
+router.route('/').get(async(req, res) => {
+   const result = await sensorController.getAllSensors();
+   res.json(result);
+});
 
-// const sensorControllers = require('../controllers/sensorController');
-// //startPoint = localhost:8000/sensors
+router.route('/:id').get(async(req, res) => {
+    const result = await userControllers.getUserById(req.params.id);
+    res.json(result);
+});
 
-// //Get by id
-// router.route('/:id').get((req, res) => {
-//     const id = req.params.id;
-//     const sensor = sensorControllers.getById(id)
-//     res.json(sensor);
-// })
+router.route('/').post(async(req, res) => {
+    const obj = req.body;
+    const result = await sensorController.addSensor(obj);
+    console.log(result)
+    res.json(result);
+});
 
+router.route('/:id').put(async(req, res) => {
+    const obj = req.body;
+    const result = await userControllers.updateUser(obj, req.params.id);
+    res.json(result);
+});
 
-// //Get All
-// router.route('/').get( (req, res) => {
-//     console.log(000)
-//     const sensors = sensorControllers.initSensors();
-//     res.json(sensors);
-//     console.log(sensors);
-//     // res.json(result).status(200);
-// })
+router.route('/:id').delete((req, res) => {
+    const result = userControllers.deleteUser(req.params.id);
+    res.json(result);
+})
 
-// //Add sensor
-// router.route('/').post( (req, res) => {
-//     const result = sensorControllers.initSensors()
-//     res.json(result);
-// })
-
-// // //Edit sensor
-// router.route('/').put(async(req, res) => {
-//     const result = await sensorControllers.updateContent();
-//     res.json(result);
-// });
-
-// // //Delete sensor
-// router.route('/:id').delete((req, res) => {
-//     const id = req.params.id;
-//     const sensors = sensorControllers.Deletesensor(id)
-//     res.json(sensors);
-// })
-
-
-
-// module.exports = router;
+module.exports = router;

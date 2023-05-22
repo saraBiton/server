@@ -1,4 +1,4 @@
-import { Lifeguard_system } from "../controllers/Lifeguard_system";
+import { Lifeguard_system } from "./Lifeguard_system";
 
 export class sensor {
   constructor(/*פה נשלחים הID SENSORמהקומפוננטה בריאקט ופרטי המשכיר*/) {

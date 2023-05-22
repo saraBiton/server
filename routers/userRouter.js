@@ -8,6 +8,7 @@ router.route('/').get(async (req, res) => {
     res.json(result);
 });
 
+
 router.route('/:password').get(async (req, res) => {
     console.log(req.params.password);
     const result = await userControllers.getUserById(req.params.password);
