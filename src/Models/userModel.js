@@ -4,7 +4,8 @@ const userSchema = Schema(
 	{
 		firstName: { type: String, required: true },
 		lastName: { type: String, required: true },
-		password: { type: String, required: true },
+		password: { type: String, required: false },
+		city: { type: String, required: false },
 		role: { type: String, enum: ['user', 'volunteer', 'parent', 'director', 'lifeguard'], required: true },
 		linkToUser: {},
 		phones: [String],
