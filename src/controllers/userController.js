@@ -1,9 +1,9 @@
 const User = require('../Models/userModel');
 // const db = require('../Config/db')
 
-const getAllUsers = async (filter) => {
+const getAllUsers = async () => {
   try {
-    const uses = await User.find(filter);
+    const uses = await User.find();
     return uses
   }
   catch (err) {

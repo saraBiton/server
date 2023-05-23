@@ -1,13 +1,13 @@
-const express = require('express');
-const db = require('./Config/db');
+import  express from 'express';
+import connectDB from './src/Config/db';
 const app = express();
-const func = require('./controllers/Function/CalculationDistance')
+const func = require('./src/controllers/Function/CalculationDistance')
 const port = 8000;
-const userRouter = require('./routers/userRouter');
-const sensorRouter = require('./routers/sensorRouter');
-const loginRouter = require('./routers/loginRouter')
+const userRouter = require('./src/routers/userRouter');
+const sensorRouter = require('./src/routers/sensorRouter');
+const loginRouter = require('./src/routers/loginRouter')
 const cors = require('cors');
-db();
+connectDB();
 app.use(cors());
 app.use(express.json());
 app.use('/users', userRouter);

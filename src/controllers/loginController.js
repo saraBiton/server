@@ -1,36 +1,36 @@
 const mongoose = require('mongoose');
-const Director = require('../Models/DirectorModel');
-const Lifeguard = require('../Models/LifeguardModel');
+// const Director = require('../Models/DirectorModel');
+// const Lifeguard = require('../Models/LifeguardModel');
 const User = require('../Models/userModel');
-const { db } = require('../sqlDB/config');
+const { db } = require('../../sqlDB/config');
 
 
-const checkLogin = async (user) => {
-  try {
-    // Check if credentials exist in Director collection
+// const checkLogin = async (user) => {
+//   try {
+//     // Check if credentials exist in Director collection
   
-    console.log(user);
-    //console
-    const director = await Director.find(user);
-    console.log(director);
-    if (director) {
-      return 'Director';
-    }
+//     console.log(user);
+//     //console
+//     const director = await Director.find(user);
+//     console.log(director);
+//     if (director) {
+//       return 'Director';
+//     }
 
-    // Check if credentials exist in Lifeguard collection
-    const lifeguard = await Lifeguard.findOne(user);
-    // console.log(lifeguard);
-    if (lifeguard) {
-      return 'Lifeguard';
-    }
+//     // Check if credentials exist in Lifeguard collection
+//     const lifeguard = await Lifeguard.findOne(user);
+//     // console.log(lifeguard);
+//     if (lifeguard) {
+//       return 'Lifeguard';
+//     }
 
-    // If credentials do not exist in either collection, return error
-    return 'Invalid credentials';
-  } catch (error) {
-    console.error(error);
-    return 'Internal server error';
-  }
-};
+//     // If credentials do not exist in either collection, return error
+//     return 'Invalid credentials';
+//   } catch (error) {
+//     console.error(error);
+//     return 'Internal server error';
+//   }
+// };
 // const { MongoClient } = require('mongodb');
 
 // const uri = 'mongodb://localhost:27017';
@@ -62,4 +62,4 @@ if (director) {
   }
 }*/ 
 
-module.exports = {getUserByPassword, checkLogin };
+module.exports = {getUserByPassword };
