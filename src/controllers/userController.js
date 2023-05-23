@@ -1,70 +1,49 @@
-const User = require('../Models/userModel');
-// const db = require('../Config/db')
+import { User } from '../Models/userModel.js';
 
 const getAllUsers = async () => {
-  try {
-    const uses = await User.find();
-    return uses
-  }
-  catch (err) {
-    return err
-  }
+	const uses = await User.find();
+	return uses;
 };
 
-const getUserById = (password) => {
-  return User.findOne({password});
+const getUserById = (id) => {
+	return User.findById(id);
 };
 
 const addUser = async (obj) => {
-  try {
-    const us = new User(obj);
-    await (us.save())
-    return us;
-  }
-  catch (err) {
-    return err;
-  }
+	const user = new User(obj);
+	await (user.save());
+	return user;
 };
 
-const updateUser = async (obj) => {
-  console.log("obj", obj)
-  try {
-    await User.findByIdAndUpdate(obj._id.toJSON('new ObjectId'), obj);
-    return "Updated!"
-  }
-  catch (err) {
-    return err;
-  }
+const updateUser = async (id, obj) => {
+	console.log('obj', obj);
+
+	const user = await User.findByIdAndUpdate(id, obj);
+	return user;
 };
 
 const deleteUser = async (id) => {
-  await User.findByIdAndDelete(id);
-  return 'Deleted!';
-}
+	const user = await User.findByIdAndDelete(id);
+	return user;
+};
 const checkLogin = async (username, password) => {
-  console.log(username);
-  console.log(password);
-  try {
-    const director = await User.findOne({ username, password });
-    console.log(director);
-    if (director)
-      return console.log(director);
-    else
-      return console.error(error);
-  }
-  catch (error) {
-    console.error(error);
-    return 'Internal server error';
-  } 
-}
+	console.log(username);
+	console.log(password);
+	try {
+		const director = await User.findOne({ username, password });
+		console.log(director);
+		if (director) { return console.log(director); } else { return console.error(); }
+	} catch (error) {
+		console.error(error);
+		return 'Internal server error';
+	}
+};
 
-
-module.exports = {
-
-  checkLogin,
-  getAllUsers,
-  getUserById,
-  addUser,
-  updateUser,
-  deleteUser,
+export default {
+	checkLogin,
+	getAllUsers,
+	getUserById,
+	addUser,
+	updateUser,
+	deleteUser
 };

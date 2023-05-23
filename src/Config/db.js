@@ -1,10 +1,10 @@
-const { default: mongoose } = require('mongoose');
+import mongoose from 'mongoose';
 
 const connectDB = () => {
-    mongoose
-      .connect('mongodb://0.0.0.0:27017/Surf-it')
-      .then(() => console.log('Connected to DB'))
-      .catch((err) => console.log(err))
+  mongoose
+    .connect('mongodb://0.0.0.0:27017/Surf-it')
+    .then(() => console.log('Connected to DB'))
+    .catch((err) => console.log(err))
 };
 
-module.exports = connectDB;
+export default connectDB;

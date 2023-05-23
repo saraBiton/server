@@ -1,9 +1,7 @@
 /** @type {import("express-ws").Router} */
-
-// import { json } from "b/ody-parser";
 import { Router } from "express";
 
-import { sensor_list } from "../../sensor_list";
+import { sensor_list } from "../../sensor_list.js";
 
 const sensor_ws_router = Router();
 

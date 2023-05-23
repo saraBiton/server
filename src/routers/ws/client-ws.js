@@ -2,7 +2,7 @@
 
 import { Router } from "express";
 
-import { sensor_list } from "../../sensor_list";
+import { sensor_list } from "../../sensor_list.js";
 
 const client_ws_router = Router();
 

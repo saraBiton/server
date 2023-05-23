@@ -1,14 +1,14 @@
-const mongoose = require('mongoose');
+import { Schema, Types, model } from 'mongoose';
 
-const sensorSchema = mongoose.Schema(
-    {
-        // sensorID: {type: String, required: true},
-        userId: { type: mongoose.Types.ObjectId, ref: 'User' },
-        lifeJacketNum: Number,
-        isActive: Boolean
-    },
-    { versionKey: false }
-);
-const Sensor = mongoose.model('sensor', sensorSchema, 'sensors');
+const sensorSchema = Schema({
+	// sensorID: {type: String, required: true},
+	userId: { type: Types.ObjectId, ref: 'User' },
+	lifeJacketNum: Number,
+	isActive: Boolean
+}, {
+	versionKey: false
+});
 
-module.exports = Sensor;
+const Sensor = model('sensor', sensorSchema, 'sensors');
+
+export { Sensor };

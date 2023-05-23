@@ -1,7 +1,7 @@
 //localhost:3000/users/
-const express = require('express');
-const sensorController = require('../controllers/sensorController');
-const router = express.Router();
+import { Router } from 'express';
+import sensorController from '../controllers/sensorController.js';
+const router = Router();
 
 router.route('/').get(async(req, res) => {
    const result = await sensorController.getAllSensors();
@@ -31,4 +31,4 @@ router.route('/:id').delete((req, res) => {
     res.json(result);
 })
 
-module.exports = router;
+export default router;
